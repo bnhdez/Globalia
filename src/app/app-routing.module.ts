@@ -19,6 +19,11 @@ const routes: Routes = [
     component: ContactPageComponent
   },
   {
+    // carga perezosa LazyLoad, loadChildren carga el modulo encapsulado con su propio router
+    path: 'countries',
+    loadChildren: () => import('./countries/countries.module').then( m => m.CountriesModule )
+  },
+  {
     path: '**',
     redirectTo: ''
   }
