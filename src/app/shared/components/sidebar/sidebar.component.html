@@ -3,11 +3,16 @@
 <ul class="list-group">
   <!-- routerLink brinda funcionalidad de link segun la definicion de routes -->
   <!-- se debe importar routerModule para que funcione dentro del modulo shared -->
-  <li routerLink="home"
+  <!-- routerLinkActive le da una clase cuando se este en esa ruta -->
+  <!-- routerLinkActiveOptions indica que el path debe ser exactamente igual -->
+  <li routerLink=""
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
     class="list-group-item">
     Home Page
   </li>
   <li routerLink="about"
+    routerLinkActive="active"
     class="list-group-item">
     About Page
   </li>
