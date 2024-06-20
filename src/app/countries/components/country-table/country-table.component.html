@@ -7,7 +7,7 @@
     <thead>
       <tr>
         <th> # </th>
-        <th> Time Zones </th>
+        <th> IOC </th>
         <th> Bandera </th>
         <th> Nombre </th>
         <th> Capital </th>
@@ -19,7 +19,7 @@
       <tr *ngFor="let country of countries; let i = index">
         <td> {{ i + 1 }} </td>
         <td>
-          {{ country.timezones }}
+          {{ country.cioc }}
         </td>
         <td>
           <img [src]="country.flags.svg" [alt]="country.name.common">
