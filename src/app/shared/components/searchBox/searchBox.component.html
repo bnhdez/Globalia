@@ -1,5 +1,9 @@
+<!-- evento key.up captura el valor de la etiqueta segun la referencia # -->
+<!-- los manda al metodo emitValue dentro del componente -->
 <input
   type="text"
   [placeholder]="placeholder"
   class="form-control"
+  (keyup.enter)="emitValue( txtInput.value )"
+  #txtInput
 >

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'countries-by-capital-page',
@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class ByCapitalPageComponent {
 
+  //recibe value emitido desde searchBoxComponent y ahora es term
+  searchByCapital( term:string ):void{
+    console.log('Desde ByCapitalPage');
+    console.log(term);
+  }
 }
