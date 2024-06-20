@@ -3,5 +3,34 @@
 </div>
 
 <ng-template #table>
-  
+  <table class="table tabler-hover">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> Time Zones </th>
+        <th> Bandera </th>
+        <th> Nombre </th>
+        <th> Capital </th>
+        <th> Población </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of countries; let i = index">
+        <td> {{ i + 1 }} </td>
+        <td>
+          {{ country.timezones }}
+        </td>
+        <td>
+          <img [src]="country.flags.svg" [alt]="country.name.common">
+        </td>
+        <td> {{ country.name.common }} </td>
+        <td> {{ country.capital }} </td>
+        <td> {{ country.population }} </td>
+        <td>
+          <a href="#">Ver más</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </ng-template>
