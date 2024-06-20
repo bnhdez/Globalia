@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Injectable, Output } from '@angular/core';
+import { countriesService } from '../../services/countries.service';
+import { Country } from '../../interfaces/country';
 
 @Component({
   selector: 'countries-by-capital-page',
@@ -7,9 +9,18 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ByCapitalPageComponent {
 
+  public countries:Country[] = []
+
+  constructor( private countriesService:countriesService ) { }
+
   //recibe value emitido desde searchBoxComponent y ahora es term
   searchByCapital( term:string ):void{
-    console.log('Desde ByCapitalPage');
-    console.log(term);
+
+    //.subscribe es un metodo para un observable que deja
+    //permite manjar los datos del observable
+    this.countriesService.searchCapital( term )
+      .subscribe( countries =>{
+        this.countries = countries;
+      } );
   }
 }
