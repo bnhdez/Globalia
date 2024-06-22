@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, delay, map, of } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import { Country } from '../interfaces/country.interface';
 import { CacheStore } from '../interfaces/cache-store.interface';
 
@@ -48,7 +48,10 @@ export class countriesService {
   //http es tipo observable que requiere interfaz si no se especifica, regresa objeto sin metodos
   searchCapital( term:string ):Observable<Country[]>{
     const url = `${this.apiUrl}/capital/${term}`;
-    return this.getCountriesRequest( url );
+    return this.getCountriesRequest( url )
+      .pipe(
+        tap( countries => this.cacheStore.byCapital = { term, countries } )
+      )
     // debo especificar que tipo de dato retornar
     // of va a regresar un nuevo observable (array vacio) con el error
     // return this.http.get<Country[]>( url )
