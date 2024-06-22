@@ -20,10 +20,25 @@
       <h3>Información</h3>
       <ul class="list-group">
         <li class="list-group-item">
+          <strong>Código: </strong>{{ country.cca3 }}
+        </li>
+        <li class="list-group-item">
+          <strong>Capital: </strong>{{ country.capital }}
+        </li>
+        <li class="list-group-item">
+          <strong>Continente: </strong>{{ country.continents }}
+        </li>
+        <li class="list-group-item">
           <strong>Población: </strong>{{ country.population | number }}
         </li>
         <li class="list-group-item">
-          <strong>Código: </strong>{{ country.cca3 }}
+          <strong>Zonas Horarias: </strong>{{ country.timezones }}
+        </li>
+        <li class="list-group-item">
+          <strong>Latitud, Longitud: </strong>{{ country.capitalInfo.latlng }}
+        </li>
+        <li class="list-group-item">
+          <strong>Mapa: </strong>{{ country.maps.openStreetMaps }}
         </li>
       </ul>
     </div>
