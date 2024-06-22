@@ -18,6 +18,15 @@ export class countriesService {
 
   constructor(private http: HttpClient) { }
 
+  private saveToLocalStorage(){
+    // stringify porque localstorage solo almacena string
+    localStorage.setItem( 'cacheStore', JSON.stringify( this.cacheStore ) );
+  }
+
+  private loadFromLocalStorage(){
+
+  }
+
   // recibo url especifico segun metodos abajo, excepto alphacode
   private getCountriesRequest( url:string ):Observable<Country[]>{
     return this.http.get<Country[]>( url )
