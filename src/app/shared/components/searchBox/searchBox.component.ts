@@ -14,11 +14,13 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
 
   // subject es observable especial de angular
   private debouncer:Subject<string> = new Subject<string>();
-
   private debouncerSubscription?:Subscription;
 
   @Input()
   public placeholder:string = '';
+
+  @Input()
+  public initialValue:string = '';
 
   //envio evento al padre, que seria byCapital
   @Output()

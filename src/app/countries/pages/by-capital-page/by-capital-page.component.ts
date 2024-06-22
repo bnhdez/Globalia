@@ -11,11 +11,13 @@ export class ByCapitalPageComponent implements OnInit {
 
   public countries:Country[] = []
   public isLoadign:boolean = false;
+  public initialValue:string = '';
 
   constructor( private countriesService:countriesService ) { }
 
   ngOnInit(): void {
     this.countries = this.countriesService.cacheStore.byCapital.countries;
+    this.initialValue = this.countriesService.cacheStore.byCapital.term;
   }
 
   //recibe value emitido desde searchBoxComponent y ahora es term
