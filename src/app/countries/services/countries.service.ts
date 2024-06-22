@@ -43,6 +43,13 @@ export class countriesService {
   }
 
   searchRegion( region:string ):Observable<Country[]>{
-
+    const url = `${this.apiUrl}/region/${region}`;
+    return this.http.get<Country[]>(url)
+      .pipe(
+        catchError(error => {
+          console.log(error);
+          return of([]);
+        })
+      )
   }
 }
