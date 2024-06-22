@@ -16,7 +16,10 @@ export class countriesService {
     byRegion: { region: '', countries: [] }
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    // ejecuta cuando se inicializa la app
+    this.loadFromLocalStorage();
+  }
 
   private saveToLocalStorage(){
     // stringify porque localstorage solo almacena string
