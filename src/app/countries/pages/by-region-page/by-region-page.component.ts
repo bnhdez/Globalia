@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { Country } from '../../interfaces/country.interface';
 import { countriesService } from '../../services/countries.service';
-
-//regiones permitidas para busqueda
-type Region = 'Africa'|'Americas'|'Asia'|'Europe'|'Oceania';
+import { Region } from '../../interfaces/region.type';
 
 @Component({
   selector: 'countries-by-region-page',
