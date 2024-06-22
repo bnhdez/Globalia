@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { Country } from '../interfaces/country';
 
 @Injectable({providedIn: 'root'})
@@ -15,6 +15,12 @@ export class countriesService {
   searchCapital( term:string ):Observable<Country[]>{
     const url = `${this.apiUrl}/capital/${term}`;
     // debo especificar que tipo de dato retornar
-    return this.http.get<Country[]>( url );
+    //map transforma la informacion del observable
+    return this.http.get<Country[]>( url )
+      .pipe(
+        tap( countries => console.log('Tap1', countries)),
+        map( countries => [] ),
+        tap( countries => console.log('Tap2', countries)),
+      )
   }
 }
