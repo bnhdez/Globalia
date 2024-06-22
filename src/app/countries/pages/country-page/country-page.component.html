@@ -38,7 +38,8 @@
           <strong>Latitud, Longitud: </strong>{{ country.capitalInfo.latlng }}
         </li>
         <li class="list-group-item">
-          <strong>Mapa: </strong>{{ country.maps.openStreetMaps }}
+          <a [href]="[country.maps.googleMaps]" target="_blank">Google Maps</a>,
+          <a [href]="[country.maps.openStreetMaps]" target="_blank">Open Street Map</a>
         </li>
       </ul>
     </div>
