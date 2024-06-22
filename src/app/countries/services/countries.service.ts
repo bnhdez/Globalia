@@ -10,6 +10,17 @@ export class countriesService {
 
   constructor(private http: HttpClient) { }
 
+  searchCountryByAlphaCode(code: string): Observable<Country[]>{
+    const url = `${this.apiUrl}/alpha/${code}`;
+    return this.http.get<Country[]>(url)
+      .pipe(
+        catchError(error => {
+          console.log(error);
+          return of([]);
+        })
+      )
+  }
+
   //term es el termino de la capital a buscar
   //http es tipo observable que requiere interfaz si no se especifica, regresa objeto sin metodos
   searchCapital( term:string ):Observable<Country[]>{
