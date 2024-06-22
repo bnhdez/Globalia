@@ -73,7 +73,7 @@ export class countriesService {
     const url = `${this.apiUrl}/name/${term}`;
     return this.getCountriesRequest(url)
       .pipe(
-        tap(countries => this.cacheStore.byCapital = { term, countries })
+        tap(countries => this.cacheStore.byCountry = { term, countries })
       )
   }
 
