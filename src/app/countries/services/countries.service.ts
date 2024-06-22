@@ -64,7 +64,8 @@ export class countriesService {
     const url = `${this.apiUrl}/capital/${term}`;
     return this.getCountriesRequest( url )
       .pipe(
-        tap( countries => this.cacheStore.byCapital = { term, countries } )
+        tap( countries => this.cacheStore.byCapital = { term, countries } ),
+        tap( () => this.saveToLocalStorage() )
       )
     // debo especificar que tipo de dato retornar
     // of va a regresar un nuevo observable (array vacio) con el error
@@ -87,7 +88,8 @@ export class countriesService {
     const url = `${this.apiUrl}/name/${term}`;
     return this.getCountriesRequest(url)
       .pipe(
-        tap(countries => this.cacheStore.byCountry = { term, countries })
+        tap(countries => this.cacheStore.byCountry = { term, countries }),
+        tap(() => this.saveToLocalStorage())
       )
   }
 
@@ -96,7 +98,8 @@ export class countriesService {
     const url = `${this.apiUrl}/region/${region}`;
     return this.getCountriesRequest(url)
       .pipe(
-        tap(countries => this.cacheStore.byRegion = { region, countries })
+        tap(countries => this.cacheStore.byRegion = { region, countries }),
+        tap(() => this.saveToLocalStorage())
       )
   }
 }
