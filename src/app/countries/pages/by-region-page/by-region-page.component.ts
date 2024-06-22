@@ -14,7 +14,7 @@ export class ByRegionPageComponent {
   constructor(private countriesService: countriesService) { }
 
   searchByRegion(term: string): void {
-    this.countriesService.searchCountry(term)
+    this.countriesService.searchRegion(term)
       .subscribe(countries => {
         this.countries = countries;
       })
