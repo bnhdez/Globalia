@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, of, tap } from 'rxjs';
+import { Observable, catchError, map, of, retry, tap } from 'rxjs';
 import { Country } from '../interfaces/country.interface';
 import { CacheStore } from '../interfaces/cache-store.interface';
 import { Region } from '../interfaces/region.type';
@@ -24,7 +24,11 @@ export class countriesService {
   }
 
   private loadFromLocalStorage(){
+    // si no tiene el elemento que en el metodo de arriba tuvo que guardar me salgo
+    if ( !localStorage.getItem( 'cacheStore' ) ) return
 
+    // el ! indico que si vien, porque ya valide con el if
+    this.cacheStore = JSON.parse( localStorage.getItem('cacheStore')! )
   }
 
   // recibo url especifico segun metodos abajo, excepto alphacode
