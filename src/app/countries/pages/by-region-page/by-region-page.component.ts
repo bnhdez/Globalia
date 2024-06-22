@@ -11,6 +11,7 @@ import { Region } from '../../interfaces/region.type';
 export class ByRegionPageComponent implements OnInit {
 
   public countries: Country[] = [];
+  public isLoadign: boolean = false;
   public regions:Region[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   public selectedRegion?:Region;
 
@@ -22,11 +23,13 @@ export class ByRegionPageComponent implements OnInit {
   }
 
   searchByRegion( region:Region ): void {
+    this.isLoadign = true;
     this.selectedRegion = region;
 
     this.countriesService.searchRegion(region)
       .subscribe(countries => {
         this.countries = countries;
+        this.isLoadign = false;
       })
   }
 }
