@@ -71,11 +71,17 @@ export class countriesService {
 
   searchCountry( term:string ):Observable<Country[]>{
     const url = `${this.apiUrl}/name/${term}`;
-    return this.getCountriesRequest(url);
+    return this.getCountriesRequest(url)
+      .pipe(
+        tap(countries => this.cacheStore.byCapital = { term, countries })
+      )
   }
 
   searchRegion( region:string ):Observable<Country[]>{
     const url = `${this.apiUrl}/region/${region}`;
-    return this.getCountriesRequest(url);
+    return this.getCountriesRequest(url)
+      .pipe(
+        // tap(countries => this.cacheStore.byCapital = { region, countries })
+      )
   }
 }
