@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { countriesService } from '../../services/countries.service';
 import { switchMap } from 'rxjs';
+import { Country } from '../../interfaces/country';
 
 @Component({
   selector: 'countries-country-page',
@@ -9,6 +10,8 @@ import { switchMap } from 'rxjs';
   styles: ``
 })
 export class CountryPageComponent implements OnInit {
+
+  public country?:Country;
 
   constructor (
     private activatedRoute:ActivatedRoute,
@@ -26,12 +29,10 @@ export class CountryPageComponent implements OnInit {
       )
       .subscribe( country => {
         // si viene null redirecciono a '', segun router '' es my default
-        if ( !country ) {
-          return this.router.navigateByUrl('');
-        }
+        if ( !country ) return this.router.navigateByUrl('');
 
-        console.log('TENEMOS UN PAIS');
-        return;
+        // asigna a propiedad publica que esta al inicio
+        return this.country = country;
       })
   }
 
