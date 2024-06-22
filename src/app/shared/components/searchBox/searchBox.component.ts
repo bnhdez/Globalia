@@ -22,6 +22,9 @@ export class SearchBoxComponent implements OnInit {
   @Output()
   public onValue:EventEmitter<string> = new EventEmitter();
 
+  @Output()
+  public onDebounce:EventEmitter<string> = new EventEmitter();
+
   ngOnInit(): void {
     this.debouncer
       .pipe(
@@ -29,7 +32,7 @@ export class SearchBoxComponent implements OnInit {
       )
       // hasta despues de pasados 1seg de no emitir valores, hace el subsribe
       .subscribe( value => {
-        console.log( 'debouncer value: ', value );
+        this.onDebounce.emit( value );
       })
   }
 

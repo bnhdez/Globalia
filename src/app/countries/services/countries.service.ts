@@ -18,7 +18,7 @@ export class countriesService {
           console.log(error);
           return of([])
         }),
-        delay( 1000 )
+        // delay( 1000 )
       )
   }
 
