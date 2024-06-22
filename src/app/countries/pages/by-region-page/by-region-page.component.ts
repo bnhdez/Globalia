@@ -6,7 +6,16 @@ import { Region } from '../../interfaces/region.type';
 @Component({
   selector: 'countries-by-region-page',
   templateUrl: './by-region-page.component.html',
-  styles: ``
+  styles: [`
+    button:hover{
+      background-color: #ced4da;
+      color: black;
+    }
+    .btn-dark:hover{
+      background-color: #343a40;
+      color: white;
+    }
+  `]
 })
 export class ByRegionPageComponent implements OnInit {
 
